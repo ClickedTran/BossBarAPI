@@ -1,5 +1,7 @@
 # apibossbar
 A simple api virion to create, send, modify and use Minecraft's boss mob indicator bars in Plugins for PocketMine-MP
+
+Original virion link: https://github.com/inxomnyaa/apibossbar
 ## Advantages
 It is quite easy to use this API
 - It uses a single object
@@ -15,24 +17,22 @@ There are 2 types of boss bars.
 - BossBar: is used for shared data, so all registered players see the same bar.
 - DiverseBossBar: is used for unique data, their data can be changed per player. They can also be set in a batch for multiple players, and will use default values if no specific data is set for a player. The default data is set like on a shared BossBar
 ## API & usage
-A very basic example can be seen here: [BossBarTest](https://github.com/thebigsmileXD/BossBarTest). For a more advanced example you could check out [BossAnnouncement](https://github.com/thebigsmileXD/BossAnnouncement)
-
-Create a new boss bar
+### Create a new boss bar
 ```php
 /** @var BossBar */
 $bar = new BossBar();
 ```
-Set the title and/or subtitle
+### Set the title and/or subtitle
 ```php
 $bar->setTitle(string $title = "");
 $bar->setSubTitle(string $subTitle = "");
 ```
-Set the fill percentage
+### Set the fill percentage
 ```php
 // Half-filled
 $bar->setPercentage(0.5);
 ```
-Add and remove players
+### Add and remove players
 ```php
 // Single
 $bar->addPlayer(Player $player);// This will spawn the bar to the player
@@ -43,20 +43,20 @@ $bar->addPlayers(array $players);
 $bar->removePlayers(array $players);
 $bar->removeAllPlayers();
 ```
-Hide and show bar
+### Hide and show bar
 ```php
 /** @var Player[] $players */
 $bar->hideFrom(array $players);
 $bar->showTo(array $players);
 ```
-Get and set the entity the bar is assigned to
+### Get and set the entity the bar is assigned to
 ```php
 /** @var Entity|Player $entity */
 $bar->getEntity();
 $bar->setEntity(Entity $entity);
 $bar->resetEntity();
 ```
-Single line example
+### Single line example
 ```php
 /** @var Player $player */
 $player = Server::getInstance()->getPlayerByName("Steve");
@@ -66,12 +66,12 @@ $bar = (new BossBar())->setTitle("Hello world!")->setSubTitle("Foo Bar")->setPer
 ---
 **DiverseBossBar has some additional methods to set data per player:**
 
-Reset the data to its defaults
+### Reset the data to its defaults
 ```php
 $bar->resetFor(Player $player);
 $bar->resetForAll();
 ```
-Set & get title for players
+### Set & get title for players
 ```php
 /** @var Player[] $players */
 $bar->setTitleFor(array $players);
@@ -80,7 +80,7 @@ $bar->getTitleFor(Player $player);
 $bar->getSubTitleFor(Player $player);
 $bar->getFullTitleFor(Player $player);// Combined and encoded title & subtitle
 ```
-Set percentage for players
+### Set percentage for players
 ```php
 /** @var Player[] $players */
 $bar->setPercentageFor(array $players);
